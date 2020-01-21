@@ -2,12 +2,21 @@
 #include <conio.h>
 #include <stdlib.h>
 #include <iostream>
-#include <windows.h>
+#include <Windows.h>
 
 int strsize(char *str) {
     int i = 0;
     while (str[i] != '\0') i++;
     return i;
+}
+
+void strreve(char *str) {
+     int i = 0, j = strsize(str) - 1;
+     for (; i < j; i++, j--) {
+         char tmp = str[i];
+         str[i] = str[j];
+         str[j] = tmp;
+     }
 }
 
 int main() {
@@ -25,10 +34,9 @@ int main() {
             str[j][i - 1] = '\0';
         }
     }
-    int max = 0;
-    for (int i = 1; i < size; i++) {
-        if (strsize(str[max]) < strsize(str[i])) max = i;
+    for (int i = 0; i < size; i++) {
+        strreve(str[i]);
+        printf("%s\n", str[i]);
     }
-    printf("%s", str[max]);
     return 0;
 }
